@@ -1,0 +1,25 @@
+name: sv_pipeline
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  # Python runtime
+  - python=3.10
+
+  # core bioinformatics tools used in shell pipeline
+  - minimap2
+  - samtools
+  - sniffles
+  - seqkit
+  - nanofilt
+
+  # python libs used in stat_breakpoints.py
+  - pysam
+  - matplotlib
+
+  # general utilities often needed for pipelines
+  - pip
+  - numpy
+  - pandas
