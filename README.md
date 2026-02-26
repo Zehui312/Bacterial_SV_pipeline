@@ -29,3 +29,12 @@ sh sniffles2_analysis.sh \
 -q 15 \
 -p /research/groups/ma1grp/home/zyu/work_2026/SV_2_Feb/SV_pipeline/script/stat_breakpoints.py
 ```
+
+**Command-line Arguments**
+
+* `-l` : Path to the Nanopore reads FASTQ file
+* `-f` : Reference genome file
+* `-o` : Output directory path
+* `-s` : Sample name
+* `-q` : Quality score cutoff for QC filtering
+* `-p` : Path to `stat_breakpoints.py` script
