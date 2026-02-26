@@ -3,12 +3,15 @@ Bacterial_SV_pipeline is a workflow for analyzing bacterial structure variation 
 
 # 1 Installing Conda 
 We recommend installing miniconda to creat a enviroment for this pipeline.
+## 1-1 install conda
+```
+wget https://repo.anaconda.com/miniconda/Miniconda3-py39_25.3.1-1-Linux-x86_64.sh /miniconda.sh
+bash ~/miniconda3/miniconda.sh -p ~/miniconda3
 
 ```
-mkdir -p ~/miniconda3
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
-bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-rm ~/miniconda3/miniconda.sh
+
+## 1-2 install mamba
+```
 conda install mamba==2.0.5
 ```
 
