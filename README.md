@@ -6,7 +6,7 @@ We recommend installing miniconda to creat a enviroment for this pipeline.
 ## 1-1 install conda
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-py39_25.3.1-1-Linux-x86_64.sh /miniconda.sh
-bash ~/miniconda3/miniconda.sh -p ~/miniconda3
+bash miniconda.sh -p ~/miniconda3
 
 ```
 
