@@ -12,7 +12,7 @@ bash miniconda.sh -p ~/miniconda3
 
 ## 1-2 install mamba
 ```
-conda install mamba==2.0.5
+conda install mamba==2.0.5 -c conda-forge
 ```
 
 # 2 Creat enviroment for SV_pipeline
@@ -25,8 +25,8 @@ mamba env create -f sv_pipeline_env.yml
 
 ```
 sh sniffles2_analysis.sh \
--l /research/groups/ma1grp/home/zyu/work_2026/Pipeline_data/SV_pipeline_data/sample_3_nanopore.fastq.gz \
--f /research/groups/ma1grp/home/zyu/work_2026/Pipeline_data/SV_pipeline_data/sample_1.fna \
+-l /research/groups/ma1grp/home/common/Zehui/Pipeline_data/SV_pipeline_data/sample_3_nanopore.fastq.gz \
+-f /research/groups/ma1grp/home/common/Zehui/Pipeline_data/SV_pipeline_data/sample_1.fna \
 -o /research/groups/ma1grp/home/zyu/work_2026/SV_2_Feb/SV_pipeline/output \
 -s F2 \
 -q 15 \
