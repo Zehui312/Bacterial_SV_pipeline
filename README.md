@@ -41,20 +41,22 @@ conda activate sv_pipeline
 ```
 ---
 
-## 3. Running a Test Analysis
-
+## 3. Fill meta_data.csv
 You just need to enter your specific parameters into **meta_data.csv**, and then run the pipeline.
+- Sample_name : Sample name  
+- Fastq_path : Path to Nanopore reads FASTQ file  
+- Ref_path: Path to Reference genome file  
+- Output_path: Path to Output directory  
+- QC_quality: Quality score cutoff for QC filtering  
+- span_cutoff: Minimum bp on EACH side of the breakpoint to count as spanning
+- breakpoint_distance: Distance for breakpoint detection
+
+---
+
+## 4. Running SV_pipeline Analysis
 
 ```bash
 sh run_pipeline.sh
 ```
----
 
-## Command-line Arguments
 
-- -l : Path to Nanopore reads FASTQ file  
-- -f : Reference genome file  
-- -o : Output directory  
-- -s : Sample name  
-- -q : Quality score cutoff for QC filtering  
-- -p : Path to stat_breakpoints.py script
