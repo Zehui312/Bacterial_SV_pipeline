@@ -7,7 +7,7 @@
 
 
 # Parse command line arguments
-while getopts "l:f:o:s:q:p:h" opt; do
+while getopts "l:f:o:s:q:p:h:a:b:" opt; do
     case $opt in
         l) long_read_path="$OPTARG" ;;
         f) fna_ref_path="$OPTARG" ;;
@@ -15,7 +15,9 @@ while getopts "l:f:o:s:q:p:h" opt; do
         s) sample_name="$OPTARG" ;;
         q) long_quality="$OPTARG" ;;
         p) stat_frequency_script="$OPTARG" ;;
-        h) echo "Usage: $0 -l long_read_path -f fna_ref_path -o output_path -s sample_name [-q quality] [-p script_path]"; exit 0 ;;
+        a) span_cutoff="$OPTARG" ;;
+        b) breakpoint_distance="$OPTARG" ;;
+        h) echo "Usage: $0 -l long_read_path -f fna_ref_path -o output_path -s sample_name [-q quality] [-p script_path] [-a span_cutoff] [-b breakpoint_distance]"; exit 0 ;;
         *) echo "Invalid option: -$OPTARG"; exit 1 ;;
     esac
 done
@@ -26,6 +28,15 @@ if [ -z "$long_read_path" ] || [ -z "$fna_ref_path" ] || [ -z "$output_path" ] |
     exit 1
 fi
 
+echo "The parameters are as follows:"
+echo "Long read path: $long_read_path"
+echo "FNA reference path: $fna_ref_path"
+echo "Output path: $output_path"
+echo "Sample name: $sample_name"
+echo "Long read quality cutoff: ${long_quality}"
+echo "Stat frequency script path: ${stat_frequency_script}"
+echo "Span cutoff: ${span_cutoff}"
+echo "Breakpoint distance: ${breakpoint_distance}"
 
 output_path_dir=${output_path}/${sample_name}
 if [ ! -d ${output_path_dir} ]; then
@@ -100,7 +111,7 @@ cat ${sample_name}_SV_chromosome.bed | while read line; do
         contig_b=${contig_a}
         breakpoint_b=${fifth_field}
     fi
-    python stat_breakpoints.py --bam ${output_path_dir}/1_mapping_Long/${sample_name}.bam --contig-a ${contig_a} --breakpoint-a ${breakpoint_a} --contig-b ${contig_b} --breakpoint-b ${breakpoint_b} --slop 5 --span-cutoff 15 --sample-name ${sample_name}-${count}-${sv_type}
+    python stat_breakpoints.py --bam ${output_path_dir}/1_mapping_Long/${sample_name}.bam --contig-a ${contig_a} --breakpoint-a ${breakpoint_a} --contig-b ${contig_b} --breakpoint-b ${breakpoint_b} --slop ${breakpoint_distance} --span-cutoff ${span_cutoff} --sample-name ${sample_name}-${count}-${sv_type}
     count=$((count + 1))
 done
 

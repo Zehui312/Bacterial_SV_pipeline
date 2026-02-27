@@ -23,7 +23,7 @@ bash miniconda.sh -p ~/miniconda3
 ### 1.2 Install Mamba
 
 Mamba is a fast reimplementation of Conda that significantly improves package installation speed.
-```
+```bash
 conda install mamba==2.0.5 -c conda-forge
 ```
 
@@ -32,28 +32,21 @@ conda install mamba==2.0.5 -c conda-forge
 ## 2. Create Environment for SV_pipeline
 
 All required software dependencies are listed in the YAML file. You can create the environment and install all tools with:
-```
+```bash
 mamba env create -f sv_pipeline_env.yml
 ```
 After creating the environment, activate it:
-```
+```bash
 conda activate sv_pipeline
 ```
 ---
 
 ## 3. Running a Test Analysis
 
-The main pipeline script is sniffles2_analysis.sh. You can submit this script to an HPC cluster as shown below:
-```
-bsub -P running -J running -n 2 -R "rusage[mem=8GB]" -eo running.err -oo running.out "
-sh sniffles2_analysis.sh \
--l /research/groups/ma1grp/home/common/Zehui/Pipeline_data/SV_pipeline_data/sample_3_nanopore.fastq.gz \
--f /research/groups/ma1grp/home/common/Zehui/Pipeline_data/SV_pipeline_data/sample_1.fna \
--o /research/groups/ma1grp/home/zyu/work_2026/SV_2_Feb/SV_pipeline/output \
--s F2 \
--q 15 \
--p /research/groups/ma1grp/home/zyu/work_2026/SV_2_Feb/SV_pipeline/script/stat_breakpoints.py
-"
+You just need to enter your specific parameters into **meta_data.csv**, and then run the pipeline.
+
+```bash
+sh run_pipeline.sh
 ```
 ---
 
