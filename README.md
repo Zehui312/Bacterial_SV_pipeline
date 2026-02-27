@@ -1,7 +1,7 @@
 # Bacterial_SV_pipeline
 Bacterial_SV_pipeline is a workflow for analyzing bacterial structure variation based on reads-level.
 Below is the workflow.
-![workflow](images/workflow.png)
+![workflow](/images/workflow.png)
 # 1 Installing Conda 
 We recommend installing miniconda to creat a enviroment for this pipeline.
 ## 1-1 install conda
