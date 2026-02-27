@@ -24,6 +24,7 @@ mamba env create -f sv_pipeline_env.yml
 # 3 Running test 
 
 ```
+bsub -P running -J running -n 2 -R "rusage[mem=8GB]" -eo running.err -oo running.out "
 sh sniffles2_analysis.sh \
 -l /research/groups/ma1grp/home/common/Zehui/Pipeline_data/SV_pipeline_data/sample_3_nanopore.fastq.gz \
 -f /research/groups/ma1grp/home/common/Zehui/Pipeline_data/SV_pipeline_data/sample_1.fna \
@@ -31,6 +32,7 @@ sh sniffles2_analysis.sh \
 -s F2 \
 -q 15 \
 -p /research/groups/ma1grp/home/zyu/work_2026/SV_2_Feb/SV_pipeline/script/stat_breakpoints.py
+"
 ```
 
 **Command-line Arguments**

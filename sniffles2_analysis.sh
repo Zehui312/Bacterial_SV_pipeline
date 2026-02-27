@@ -83,7 +83,7 @@ mkdir -p ${output_path_dir}/5_SV_frequency
 cd ${output_path_dir}/5_SV_frequency
 
 
-cat ${output_path_dir}/4_SV_calling_chimeric/${sample_name}_SV_chimeric_chromosome.vcf |awk '{if ($2 > 100) print $0}' |grep "PRECISE" | awk '{print $1"\t"$2"\t"$3"\t"$5"\t"$8}' | sed 's/PRECISE.*END=//g' | sed 's/;.*//g' > ${sample_name}_SV_chromosome.bed
+cat ${output_path_dir}/4_SV_calling_chimeric/${sample_name}_SV_chimeric_chromosome.vcf |awk '{if ($2 > 100) print $0}'|grep -v "#" |grep "PRECISE" | awk '{print $1"\t"$2"\t"$3"\t"$5"\t"$8}' | sed 's/PRECISE.*END=//g' | sed 's/;.*//g' > ${sample_name}_SV_chromosome.bed
 cp ${stat_frequency_script} .
 count=1
 cat ${sample_name}_SV_chromosome.bed | while read line; do
@@ -102,7 +102,7 @@ cat ${sample_name}_SV_chromosome.bed | while read line; do
     fi
     python stat_breakpoints.py --bam ${output_path_dir}/1_mapping_Long/${sample_name}.bam --contig-a ${contig_a} --breakpoint-a ${breakpoint_a} --contig-b ${contig_b} --breakpoint-b ${breakpoint_b} --slop 5 --span-cutoff 15 --sample-name ${sample_name}-${count}-${sv_type}
     count=$((count + 1))
-done 
+done
 
 
 
