@@ -1,6 +1,7 @@
 # Bacterial_SV_pipeline
 Bacterial_SV_pipeline is a workflow for analyzing bacterial structure variation based on reads-level.
-
+Below is the workflow.
+![workflow](images/workflow.png)
 # 1 Installing Conda 
 We recommend installing miniconda to creat a enviroment for this pipeline.
 ## 1-1 install conda
@@ -11,17 +12,26 @@ bash miniconda.sh -p ~/miniconda3
 ```
 
 ## 1-2 install mamba
+mamba is a reimplementation of the conda package and can improve installing speed
+
 ```
 conda install mamba==2.0.5 -c conda-forge
 ```
 
 # 2 Creat enviroment for SV_pipeline
+The all softwares are in the **yml** file. You can create a enviromental and install all softwares easily.
 
 ```
 mamba env create -f sv_pipeline_env.yml
 ```
 
-# 3 Running test 
+After creating environment, activate and go to environment.
+```
+conda activate sv_pipeline
+```
+
+# 3 Running test
+sniffles2_analysis.sh is main pipeline, you can submit script pipeline into hpc.
 
 ```
 bsub -P running -J running -n 2 -R "rusage[mem=8GB]" -eo running.err -oo running.out "
